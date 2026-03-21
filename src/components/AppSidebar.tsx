@@ -77,7 +77,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         {subjects.length > 0 && (
-          <SidebarGroup defaultOpen>
+          <SidebarGroup>
             <SidebarGroupLabel>
               <BookOpen className="mr-2 h-3.5 w-3.5" />
               Subjects
