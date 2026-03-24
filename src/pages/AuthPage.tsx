@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/components/ui/sonner";
-import { BookOpen, GraduationCap, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import sankalpLogo from "@/assets/sankalp-logo.png";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
