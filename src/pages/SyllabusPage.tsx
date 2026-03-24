@@ -95,7 +95,7 @@ export default function SyllabusPage() {
                   <CollapsibleContent>
                     <CardContent className="pt-0 space-y-4">
                       {subject.units.map(unit => {
-                        const unitProgress = getUnitProgress(unit.id, unit.topics);
+                        const unitProgress = getUnitProgress(unit.topics);
                         const unitOpen = openUnits[unit.id] ?? true;
 
                         return (
