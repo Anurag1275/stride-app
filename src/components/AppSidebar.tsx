@@ -6,6 +6,7 @@ import { NavLink } from "@/components/NavLink";
 import { useProgress } from "@/context/ProgressContext";
 import { getSemester } from "@/data/syllabus";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import sankalpLogo from "@/assets/sankalp-logo.png";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarFooter, SidebarHeader, useSidebar,
@@ -37,9 +38,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl sankalp-gradient text-primary-foreground font-bold text-sm shadow-sm">
-            S
-          </div>
+          <img src={sankalpLogo} alt="Sankalp" className="h-9 w-9 shrink-0 rounded-xl object-contain" />
           {!collapsed && (
             <div>
               <span className="text-base font-bold tracking-tight">Sankalp</span>
