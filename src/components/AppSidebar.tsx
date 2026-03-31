@@ -1,6 +1,6 @@
 import {
   LayoutDashboard, BookOpen, FlaskConical, User, Zap, GraduationCap, Video,
-  Timer, CalendarCheck, FileQuestion, Bell,
+  Timer, CalendarCheck, FileQuestion, Bell, Bot, Brain,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useProgress } from "@/context/ProgressContext";
