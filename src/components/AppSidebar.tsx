@@ -23,6 +23,7 @@ const mainNav = [
   { title: "Lecture Videos", url: "/lectures", icon: Video },
   { title: "PYQ Papers", url: "/pyq", icon: FileQuestion },
   { title: "Quick Revision", url: "/revision", icon: Zap },
+  { title: "University Notices", url: "/notices", icon: Bell },
   { title: "Profile", url: "/profile", icon: User },
 ];
 
