@@ -56,6 +56,7 @@ function ProtectedRoutes() {
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/notes" element={<NotesPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AppLayout>

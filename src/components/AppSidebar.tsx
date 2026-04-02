@@ -22,6 +22,7 @@ const mainNav = [
   { title: "Pomodoro Timer", url: "/pomodoro", icon: Timer },
   { title: "Lecture Videos", url: "/lectures", icon: Video },
   { title: "PYQ Papers", url: "/pyq", icon: FileQuestion },
+  { title: "My Notes", url: "/notes", icon: StickyNote },
   { title: "Quick Revision", url: "/revision", icon: Zap },
   { title: "AI Chatbot", url: "/chatbot", icon: Bot },
   { title: "Quiz Mode", url: "/quiz", icon: Brain },
