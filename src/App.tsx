@@ -61,6 +61,10 @@ function ProtectedRoutes() {
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/notes" element={<NotesPage />} />
+          <Route path="/important-questions" element={<ImportantQuestionsPage />} />
+          <Route path="/backlog-planner" element={<BacklogPlannerPage />} />
+          <Route path="/doubt-hub" element={<DoubtHubPage />} />
+          <Route path="/test-series" element={<TestSeriesPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AppLayout>
