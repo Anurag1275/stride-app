@@ -10,7 +10,11 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages, mode } = await req.json();
+    const body = await req.json();
+    const { messages: msgs, message, mode } = body;
+    const messages = Array.isArray(msgs) && msgs.length
+      ? msgs
+      : [{ role: "user", content: String(message ?? "") }];
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -73,7 +77,8 @@ CRITICAL OUTPUT RULES:
     if (mode === "quiz") {
       const data = await response.json();
       const content = data.choices?.[0]?.message?.content || "";
-      return new Response(JSON.stringify({ content }), {
+      // Provide both keys for backward compatibility (content + response)
+      return new Response(JSON.stringify({ content, response: content }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
