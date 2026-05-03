@@ -26,21 +26,14 @@ Keep answers concise, use markdown formatting, and add examples when helpful.
 If asked about non-academic topics, politely redirect to studies.`;
 
     if (mode === "quiz") {
-      systemPrompt = `You are a quiz generator for B.Tech CSE students. When given a subject and topic, generate exactly 5 multiple-choice questions.
+      systemPrompt = `You are an expert MCQ generator for B.Tech CSE university exams.
 
-IMPORTANT: Return ONLY valid JSON in this exact format, no markdown, no extra text:
-{
-  "questions": [
-    {
-      "question": "What is...?",
-      "options": ["A) ...", "B) ...", "C) ...", "D) ..."],
-      "correct": 0,
-      "explanation": "Brief explanation..."
-    }
-  ]
-}
-
-Make questions exam-relevant, covering key concepts. Include a mix of easy, medium, and hard questions.`;
+CRITICAL OUTPUT RULES:
+- Return ONLY a raw JSON array (starting with [ and ending with ]).
+- NO markdown fences, NO commentary, NO leading/trailing text.
+- Every object MUST have these exact keys: question (string), options (array of EXACTLY 4 plain strings without "A)" prefixes), correct (integer 0-3 indicating the correct option index), explanation (1-2 sentence string), topic (string identifying the topic).
+- Generate the EXACT number of questions requested by the user.
+- Make questions exam-relevant, technically accurate, with plausible distractors.`;
     }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
