@@ -26,11 +26,6 @@ const GoogleIcon = () => (
     />
   </svg>
 );
-const AppleIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-    <path d="M16.365 1.43c0 1.14-.42 2.21-1.13 2.99-.78.86-2.05 1.53-3.07 1.45-.13-1.13.41-2.27 1.1-3 .77-.84 2.07-1.49 3.1-1.44zm4.04 16.05c-.55 1.27-.81 1.84-1.51 2.96-.99 1.55-2.39 3.49-4.13 3.5-1.55.02-1.95-.99-4.05-.98-2.1.02-2.55 1-4.1.98-1.74-.02-3.06-1.77-4.05-3.32C-.74 15.7-1.18 9.6 1.04 6.36c1.41-2.06 3.65-3.27 5.74-3.27 2.13 0 3.46 1.16 5.22 1.16 1.7 0 2.74-1.16 5.21-1.16 1.86 0 3.84 1.02 5.24 2.78-4.6 2.52-3.85 9.07-1.05 11.61z" />
-  </svg>
-);
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
@@ -124,38 +119,21 @@ export default function AuthPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Social auth */}
-            <div className="grid grid-cols-2 gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => handleOAuth("google")}
-                disabled={!!oauthLoading || loading}
-                className="transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {oauthLoading === "google" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <>
-                    <GoogleIcon /> Google
-                  </>
-                )}
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => handleOAuth("apple")}
-                disabled={!!oauthLoading || loading}
-                className="transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {oauthLoading === "apple" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <>
-                    <AppleIcon /> Apple
-                  </>
-                )}
-              </Button>
-            </div>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => handleOAuth("google")}
+              disabled={!!oauthLoading || loading}
+              className="w-full transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              {oauthLoading === "google" ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <>
+                  <GoogleIcon /> Google
+                </>
+              )}
+            </Button>
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
