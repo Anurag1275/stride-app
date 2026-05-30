@@ -100,8 +100,8 @@ export default function AuthPage() {
           />
           <div>
             <h1
-              className="text-2xl font-bold tracking-tight text-foreground"
-              style={{ lineHeight: "1.1" }}
+              className="text-2xl font-bold tracking-tight"
+              style={{ color: "#B5541C", lineHeight: "1.1" }}
             >
               Sankalp
             </h1>

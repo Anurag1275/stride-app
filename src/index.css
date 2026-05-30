@@ -6,105 +6,105 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 224 30% 12%;
+    --background: 30 23% 94%;
+    --foreground: 0 0% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 30% 12%;
+    --card: 30 33% 98%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 30% 12%;
+    --popover: 30 33% 98%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 230 80% 60%;
+    --primary: 20 75% 41%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 93%;
-    --secondary-foreground: 224 25% 15%;
+    --secondary: 30 18% 90%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 220 15% 93%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 30 18% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 185 72% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 25 40% 88%;
+    --accent-foreground: 20 75% 41%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 230 80% 60%;
+    --border: 30 18% 85%;
+    --input: 30 18% 85%;
+    --ring: 20 75% 41%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 224 30% 12%;
-    --sidebar-primary: 230 80% 60%;
+    --sidebar-background: 30 33% 98%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 20 75% 41%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 95%;
-    --sidebar-accent-foreground: 224 25% 12%;
-    --sidebar-border: 220 15% 92%;
-    --sidebar-ring: 230 80% 60%;
+    --sidebar-accent: 25 40% 88%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 30 18% 85%;
+    --sidebar-ring: 20 75% 41%;
 
     --sankalp-green: 152 55% 42%;
-    --sankalp-green-light: 152 40% 95%;
+    --sankalp-green-light: 30 30% 93%;
     --sankalp-amber: 38 92% 50%;
-    --sankalp-amber-light: 38 80% 94%;
-    --sankalp-blue: 217 71% 53%;
-    --sankalp-blue-light: 217 60% 95%;
+    --sankalp-amber-light: 25 40% 88%;
+    --sankalp-blue: 20 75% 41%;
+    --sankalp-blue-light: 25 40% 88%;
     --sankalp-red: 0 72% 51%;
-    --sankalp-red-light: 0 60% 95%;
-    --sankalp-indigo: 230 80% 60%;
-    --sankalp-cyan: 185 72% 45%;
+    --sankalp-red-light: 25 40% 88%;
+    --sankalp-indigo: 20 75% 41%;
+    --sankalp-cyan: 20 55% 55%;
   }
 
   .dark {
-    --background: 224 30% 6%;
-    --foreground: 220 15% 92%;
+    --background: 20 15% 8%;
+    --foreground: 30 15% 90%;
 
-    --card: 224 25% 10%;
-    --card-foreground: 220 15% 92%;
+    --card: 20 15% 12%;
+    --card-foreground: 30 15% 90%;
 
-    --popover: 224 25% 10%;
-    --popover-foreground: 220 15% 92%;
+    --popover: 20 15% 12%;
+    --popover-foreground: 30 15% 90%;
 
-    --primary: 230 80% 65%;
+    --primary: 20 75% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 224 18% 16%;
-    --secondary-foreground: 220 15% 85%;
+    --secondary: 20 12% 18%;
+    --secondary-foreground: 30 15% 85%;
 
-    --muted: 224 18% 16%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 20 12% 18%;
+    --muted-foreground: 20 10% 55%;
 
-    --accent: 185 72% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 20 30% 20%;
+    --accent-foreground: 20 75% 55%;
 
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 224 18% 16%;
-    --input: 224 18% 16%;
-    --ring: 230 80% 65%;
+    --border: 20 12% 18%;
+    --input: 20 12% 18%;
+    --ring: 20 75% 50%;
 
-    --sidebar-background: 224 28% 8%;
-    --sidebar-foreground: 220 15% 85%;
-    --sidebar-primary: 230 80% 65%;
+    --sidebar-background: 20 15% 10%;
+    --sidebar-foreground: 30 15% 85%;
+    --sidebar-primary: 20 75% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 224 18% 14%;
-    --sidebar-accent-foreground: 220 15% 85%;
-    --sidebar-border: 224 18% 14%;
-    --sidebar-ring: 230 80% 65%;
+    --sidebar-accent: 20 15% 15%;
+    --sidebar-accent-foreground: 30 15% 85%;
+    --sidebar-border: 20 12% 16%;
+    --sidebar-ring: 20 75% 50%;
 
     --sankalp-green: 152 55% 45%;
-    --sankalp-green-light: 152 30% 15%;
+    --sankalp-green-light: 20 20% 15%;
     --sankalp-amber: 38 92% 50%;
-    --sankalp-amber-light: 38 40% 15%;
-    --sankalp-blue: 217 71% 58%;
-    --sankalp-blue-light: 217 40% 15%;
+    --sankalp-amber-light: 20 25% 18%;
+    --sankalp-blue: 20 75% 50%;
+    --sankalp-blue-light: 20 25% 18%;
     --sankalp-red: 0 72% 55%;
-    --sankalp-red-light: 0 40% 15%;
-    --sankalp-indigo: 230 80% 65%;
-    --sankalp-cyan: 185 72% 50%;
+    --sankalp-red-light: 20 25% 18%;
+    --sankalp-indigo: 20 75% 50%;
+    --sankalp-cyan: 20 55% 55%;
   }
 }
 
@@ -157,11 +157,11 @@
 
 @layer utilities {
   .sankalp-gradient {
-    background: linear-gradient(135deg, hsl(var(--sankalp-indigo)) 0%, hsl(var(--sankalp-cyan)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(20, 55%, 30%) 100%);
   }
 
   .sankalp-gradient-animated {
-    background: linear-gradient(135deg, hsl(var(--sankalp-indigo)), hsl(var(--sankalp-cyan)), hsl(var(--sankalp-indigo)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(20, 55%, 30%), hsl(var(--primary)));
     background-size: 200% 200%;
     animation: gradient-shift 6s ease infinite;
   }
@@ -188,7 +188,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--sankalp-indigo)), hsl(var(--sankalp-cyan)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(20, 55%, 55%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

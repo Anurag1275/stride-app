@@ -79,13 +79,13 @@ export default function OnboardingPage({ initial, onComplete, isCoverSheet }: Pr
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-background to-cyan-50 dark:from-indigo-950/40 dark:via-background dark:to-cyan-950/40 p-4 md:p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-background to-amber-50 dark:from-orange-950/40 dark:via-background dark:to-amber-950/40 p-4 md:p-8 flex items-center justify-center">
       <Card className="w-full max-w-2xl border-0 shadow-2xl glass-strong animate-fade-in-up">
         <CardHeader className="text-center pb-2">
-          <div className="mx-auto h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center shadow-lg mb-2">
+          <div className="mx-auto h-14 w-14 rounded-2xl flex items-center justify-center shadow-lg mb-2" style={{ background: "linear-gradient(135deg, #B5541C, #8B3A12)" }}>
             <GraduationCap className="h-7 w-7 text-white" />
           </div>
-          <CardTitle className="text-2xl bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
+          <CardTitle className="text-2xl bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #B5541C, #8B3A12)" }}>
             {isCoverSheet ? "Exam Cover Sheet" : "Welcome to Sankalp"}
           </CardTitle>
           <CardDescription>
@@ -168,7 +168,7 @@ export default function OnboardingPage({ initial, onComplete, isCoverSheet }: Pr
             </div>
           </div>
 
-          <Button onClick={submit} disabled={loading} className="w-full h-11 bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white shadow-lg">
+          <Button onClick={submit} disabled={loading} className="w-full h-11 text-white shadow-lg" style={{ background: "linear-gradient(135deg, #B5541C, #8B3A12)" }}>
             {loading ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Sparkles className="h-4 w-4 mr-2" />}
             {isCoverSheet ? "Confirm & Start Exam" : "Continue to Dashboard"}
           </Button>

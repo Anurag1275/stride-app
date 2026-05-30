@@ -199,10 +199,18 @@ export default function Dashboard() {
             </div>
 
             {/* AI Insight Card */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 max-w-lg border border-white/10">
+            <div
+              className="backdrop-blur-sm max-w-lg"
+              style={{
+                background: "rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.3)",
+                borderRadius: "12px",
+                padding: "8px 14px",
+              }}
+            >
               <div className="flex items-start gap-2">
                 <Sparkles className="h-4 w-4 text-amber-200 shrink-0 mt-0.5" />
-                <p className="text-sm leading-relaxed opacity-90">{aiInsight}</p>
+                <p className="text-sm leading-relaxed text-white font-bold">{aiInsight}</p>
               </div>
             </div>
 
@@ -255,6 +263,7 @@ export default function Dashboard() {
             icon: BookOpen, label: "Subjects", value: subjects.length, sub: `${labs.length} labs`,
             color: "text-primary", bgColor: "bg-primary/10", trend: null,
             sparkline: subjectStats.map(s => s.progress),
+            hint: "add your syllabus",
           },
           {
             icon: Target, label: "Topics Done", value: subjectStats.reduce((a, s) => a + s.completed, 0),
@@ -262,18 +271,21 @@ export default function Dashboard() {
             color: "text-sankalp-green", bgColor: "bg-sankalp-green/10",
             trend: overallProgress > 50 ? "+12% this week" : null,
             sparkline: [20, 35, 45, 50, 55, 65, overallProgress],
+            hint: "start studying to track",
           },
           {
             icon: Trophy, label: "XP Earned", value: xpPoints, sub: `Level ${level}`,
             color: "text-sankalp-amber", bgColor: "bg-sankalp-amber/10",
             trend: xpPoints > 100 ? "Rising" : null,
             sparkline: [10, 25, 40, 55, 70, 85, xpPoints % 100 || 50],
+            hint: "complete tasks to earn XP",
           },
           {
             icon: Timer, label: "Study Today", value: `${todayMinutes}m`, sub: "focus time",
             color: "text-sankalp-cyan", bgColor: "bg-sankalp-cyan/10",
             trend: todayMinutes >= 60 ? "Great session!" : null,
             sparkline: sparklineData,
+            hint: "start a session to track time",
           },
         ].map((stat, i) => (
           <Card key={i} className="glass border-0 card-hover group overflow-hidden relative">
@@ -290,6 +302,9 @@ export default function Dashboard() {
                 )}
               </div>
               <p className="text-2xl font-bold font-display tabular-nums">{stat.value}</p>
+              {(stat.value === 0 || stat.value === "0m") && (
+                <p className="text-[11px] text-gray-400 italic mt-0.5">{stat.hint}</p>
+              )}
               <div className="flex items-center gap-1.5 mt-1">
                 <p className="text-[11px] text-muted-foreground">{stat.sub}</p>
                 {stat.trend && (
@@ -315,7 +330,17 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="flex-1 min-w-[120px]">
-          <Progress value={xpPoints % 100} className="h-2.5" />
+          <div style={{ background: "#F0E0D0", borderRadius: "999px", height: "8px", overflow: "hidden" }}>
+            <div
+              style={{
+                width: `${xpPoints % 100}%`,
+                background: "#B5541C",
+                borderRadius: "999px",
+                height: "100%",
+                transition: "width 0.5s ease",
+              }}
+            />
+          </div>
         </div>
         <div className="flex items-center gap-1.5 flex-wrap">
           {streak >= 3 && (

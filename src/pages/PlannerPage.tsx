@@ -65,14 +65,26 @@ export default function PlannerPage() {
   };
 
   const toggleTask = async (task: StudyTask) => {
+    const completing = !task.is_completed;
     await supabase
       .from("study_tasks")
       .update({
-        is_completed: !task.is_completed,
-        completed_at: !task.is_completed ? new Date().toISOString() : null,
+        is_completed: completing,
+        completed_at: completing ? new Date().toISOString() : null,
       })
       .eq("id", task.id);
     fetchTasks();
+    if (completing) {
+      toast("Nice work! Task completed ✓", {
+        duration: 3000,
+        style: {
+          background: "#fff",
+          borderLeft: "4px solid #22C55E",
+          borderRadius: "12px",
+          boxShadow: "0 4px 24px -6px rgba(0,0,0,0.1)",
+        },
+      });
+    }
   };
 
   const deleteTask = async (id: string) => {

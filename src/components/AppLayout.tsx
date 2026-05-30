@@ -1,11 +1,13 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { WelcomeModal } from "@/components/WelcomeModal";
 import sankalpLogo from "@/assets/sankalp-logo.png";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
+      <WelcomeModal />
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">

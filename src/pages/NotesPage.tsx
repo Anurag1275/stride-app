@@ -249,29 +249,76 @@ export default function NotesPage() {
 
               return (
                 <div key={unit.id} className="space-y-2">
-                  <p className="text-sm font-medium text-muted-foreground">{unit.name}</p>
-                  {allNotes.length > 0 ? (
-                    <ul className="space-y-1.5 pl-1">
-                      {allNotes.map((note, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm">
-                          <span className="text-primary mt-0.5">•</span>
-                          <span className="flex-1">{note}</span>
-                          {i >= defaultNotes.length && (
-                            <Button
-                              variant="ghost" size="icon" className="h-6 w-6 shrink-0"
-                              onClick={() => removeNote(unit.id, i - defaultNotes.length)}
-                            >
-                              <X className="h-3 w-3" />
-                            </Button>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-xs text-muted-foreground italic">No notes yet</p>
-                  )}
+                  {(() => {
+                    const displayNotes = allNotes.filter(n => n !== "Detailed notes coming soon...");
+                    const noteCount = displayNotes.length;
+                    return (
+                      <div
+                        className="flex items-center justify-between"
+                        style={{
+                          borderLeft: "3px solid #B5541C",
+                          paddingLeft: 8,
+                        }}
+                      >
+                        <p style={{ fontWeight: 600, fontSize: 15 }}>{unit.name}</p>
+                        <span
+                          style={{
+                            background: "#F0E0D0",
+                            color: "#B5541C",
+                            fontSize: 11,
+                            padding: "2px 8px",
+                            borderRadius: 999,
+                          }}
+                        >
+                          {noteCount} {noteCount === 1 ? "note" : "notes"}
+                        </span>
+                      </div>
+                    );
+                  })()}
+                  {(() => {
+                    const displayNotes = allNotes.filter(n => n !== "Detailed notes coming soon...");
+                    const customStartIndex = defaultNotes.filter(n => n !== "Detailed notes coming soon...").length;
+                    if (displayNotes.length > 0) {
+                      return (
+                        <ul className="space-y-1.5 pl-1">
+                          {displayNotes.map((note, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm">
+                              <span className="text-primary mt-0.5">•</span>
+                              <span className="flex-1">{note}</span>
+                              {i >= customStartIndex && (
+                                <Button
+                                  variant="ghost" size="icon" className="h-6 w-6 shrink-0"
+                                  onClick={() => removeNote(unit.id, i - customStartIndex)}
+                                >
+                                  <X className="h-3 w-3" />
+                                </Button>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    return (
+                      <div className="flex flex-col items-center py-4 gap-1.5">
+                        <BookOpen className="text-gray-400" style={{ width: 16, height: 16 }} />
+                        <p className="text-gray-400 italic" style={{ fontSize: 13 }}>No notes yet for this unit</p>
+                        <button
+                          type="button"
+                          className="transition-colors italic cursor-pointer bg-transparent border-0 p-0"
+                          style={{ fontSize: 13, color: "#B5541C" }}
+                          onClick={() => {
+                            const input = document.getElementById(`note-input-${unit.id}`);
+                            if (input) input.focus();
+                          }}
+                        >
+                          Be the first to add one →
+                        </button>
+                      </div>
+                    );
+                  })()}
                   <div className="flex gap-2">
                     <Input
+                      id={`note-input-${unit.id}`}
                       placeholder="Add a note..."
                       value={newNote[unit.id] || ""}
                       onChange={e => setNewNote(prev => ({ ...prev, [unit.id]: e.target.value }))}

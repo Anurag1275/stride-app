@@ -36,7 +36,7 @@ const mainNav = [
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const { semester, setSemester } = useProgress();
+  const { semester, setSemester, userName } = useProgress();
   const semData = getSemester(semester);
   const subjects = semData?.subjects.filter(s => !s.isLab) || [];
   const labs = semData?.subjects.filter(s => s.isLab) || [];
@@ -177,8 +177,8 @@ export function AppSidebar() {
                 <GraduationCap className="h-3.5 w-3.5 text-primary-foreground" />
               </div>
               <div>
-                <span className="text-xs font-medium">Sem {semester}</span>
-                <p className="text-[9px] text-muted-foreground">B.Tech CSE</p>
+                <span className="text-xs font-medium">{userName}</span>
+                <p className="text-[9px] text-muted-foreground">Sem {semester} · B.Tech CSE</p>
               </div>
             </div>
           )}

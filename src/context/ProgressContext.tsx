@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface ProgressState {
   semester: number;
@@ -35,6 +38,7 @@ const defaultState: ProgressState = {
 };
 
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
   const [state, setState] = useState<ProgressState>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -44,16 +48,58 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
   });
 
+  // Sync userName from Supabase profile (profiles table → user_metadata fallback → "Student")
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("profiles")
+      .select("display_name")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        const name =
+          data?.display_name ||
+          user.user_metadata?.display_name ||
+          "Student";
+        setState(s => ({ ...s, userName: name }));
+      });
+  }, [user]);
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
   const setSemester = useCallback((sem: number) => setState(s => ({ ...s, semester: sem })), []);
-  const toggleTopic = useCallback((topicId: string) =>
-    setState(s => ({
-      ...s,
-      completedTopics: { ...s.completedTopics, [topicId]: !s.completedTopics[topicId] },
-    })), []);
+  const toggleTopic = useCallback((topicId: string) => {
+    setState(s => {
+      const wasCompleted = !!s.completedTopics[topicId];
+      if (!wasCompleted) {
+        // Completing a topic — fire toasts
+        toast("Nice work! Task completed ✓", {
+          duration: 3000,
+          style: {
+            background: "#fff",
+            borderLeft: "4px solid #22C55E",
+            borderRadius: "12px",
+            boxShadow: "0 4px 24px -6px rgba(0,0,0,0.1)",
+          },
+        });
+        toast("You earned 10 XP! Keep going 🔥", {
+          duration: 3000,
+          style: {
+            background: "#fff",
+            borderLeft: "4px solid #B5541C",
+            borderRadius: "12px",
+            boxShadow: "0 4px 24px -6px rgba(0,0,0,0.1)",
+          },
+        });
+      }
+      return {
+        ...s,
+        completedTopics: { ...s.completedTopics, [topicId]: !wasCompleted },
+      };
+    });
+  }, []);
   const isTopicCompleted = useCallback((topicId: string) => !!state.completedTopics[topicId], [state.completedTopics]);
   const addNote = useCallback((unitId: string, note: string) =>
     setState(s => ({
