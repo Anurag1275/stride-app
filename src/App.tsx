@@ -56,8 +56,10 @@ function ProtectedRoutes() {
 
   if (!profile?.onboarding_completed) {
     return <OnboardingPage initial={profile} onComplete={() => {
-      supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle()
-        .then(({ data }) => setProfile(data));
+      setTimeout(() => {
+        supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle()
+          .then(({ data }) => setProfile(data));
+      }, 500);
     }} />;
   }
 
