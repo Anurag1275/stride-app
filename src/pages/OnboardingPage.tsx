@@ -75,7 +75,7 @@ export default function OnboardingPage({ initial, onComplete, isCoverSheet }: Pr
       return;
     }
     toast({ title: "Welcome aboard! 🎉", description: "Your profile has been saved." });
-    setTimeout(() => onComplete(), 800);
+    setTimeout(() => window.location.href = "/", 800);
   };
 
   return (
